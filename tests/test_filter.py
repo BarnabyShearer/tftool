@@ -15,6 +15,7 @@ def test_filter() -> None:
   "resource_changes": [
     {
       "address": "somthing.main",
+      "name": "main",
       "change": {
         "actions": ["create"]
       }
@@ -41,5 +42,5 @@ def test_filter() -> None:
                 False,
             )
         )
-        == ["somthing.main"]
+        == [("somthing.main", "main")]
     )

@@ -49,6 +49,16 @@ def _parser() -> ArgumentParser:
     subparsers.add_parser(
         "target", help="Construct -target arguments for xargs.", parents=[filters]
     )
+    autoimport = subparsers.add_parser(
+        "autoimport",
+        help="Try and import pending targets "
+        "assuming the resource name matches the ID.",
+    )
+    autoimport.add_argument(
+        "-r",
+        "--regex",
+        help="Regex to select targets.",
+    )
     return parser
 
 
@@ -59,11 +69,11 @@ def main() -> None:  # pragma: no cover
         for target in _filter(
             sys.stdin, args.regex, args.creates, args.updates, args.destroys, args.noops
         ):
-            print(target)
+            print(target[0])
     elif args.command == "target":
         print(
             "\x00".join(
-                f"-target={target}"
+                f"-target={target[0]}"
                 for target in _filter(
                     sys.stdin,
                     args.regex,
@@ -71,6 +81,21 @@ def main() -> None:  # pragma: no cover
                     args.updates,
                     args.destroys,
                     args.noops,
+                )
+            ),
+            end="",
+        )
+    elif args.command == "autoimport":
+        print(
+            "\x00".join(
+                f"{target[0]}\x00{target[1]}"
+                for target in _filter(
+                    sys.stdin,
+                    args.regex,
+                    True,
+                    False,
+                    False,
+                    False,
                 )
             ),
             end="",

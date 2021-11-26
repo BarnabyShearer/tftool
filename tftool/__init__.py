@@ -2,7 +2,7 @@
 
 import json
 import re
-from typing import Any, Iterable, Optional, TextIO
+from typing import Any, Iterable, Optional, TextIO, Tuple
 
 JSON = Any
 
@@ -14,10 +14,10 @@ def _filter(
     updates: bool,
     destroys: bool,
     noops: bool,
-) -> Iterable[str]:
+) -> Iterable[Tuple[str, str]]:
     for resource in json.load(plan)["resource_changes"]:
         if {"create": creates, "update": updates, "no-op": noops, "delete": destroys}[
             resource["change"]["actions"][0]
         ]:
             if not regex or re.search(regex, resource["address"]):
-                yield resource["address"]
+                yield (resource["address"], resource.get("index", resource["name"]))
