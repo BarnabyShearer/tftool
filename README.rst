@@ -32,3 +32,4 @@ Usage
 
     # Automatically import new resources if their name/index matches the id.
     tfplan | tftool autoimport | tfimport
+
