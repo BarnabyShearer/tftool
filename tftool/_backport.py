@@ -45,8 +45,8 @@ class BooleanOptionalAction(Action):
     def __call__(self, parser, namespace, values, option_string=None):
         """Call."""
         if option_string in self.option_strings:
-            setattr(namespace, self.dest, not option_string.startswith('--no-'))
+            setattr(namespace, self.dest, not option_string.startswith("--no-"))
 
     def format_usage(self):
         """Help."""
-        return ' | '.join(self.option_strings)
+        return " | ".join(self.option_strings)
