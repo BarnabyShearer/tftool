@@ -44,9 +44,9 @@ class BooleanOptionalAction(Action):
 
     def __call__(self, parser, namespace, values, option_string=None):
         """Call."""
-        if option_string in self.option_strings:
+        if option_string in self.option_strings:  # pragma: no cover
             setattr(namespace, self.dest, not option_string.startswith("--no-"))
 
-    def format_usage(self):
+    def format_usage(self):  # pragma: no cover
         """Help."""
         return " | ".join(self.option_strings)
