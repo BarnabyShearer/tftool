@@ -1,9 +1,10 @@
 """Command line entrypoint."""
 
 import sys
-from argparse import ArgumentParser, BooleanOptionalAction
+from argparse import ArgumentParser
 
 from . import _filter
+from ._backport import BooleanOptionalAction  # type: ignore
 
 
 def _parser() -> ArgumentParser:

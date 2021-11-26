@@ -1,8 +1,16 @@
 tftool
-====
+======
 
 Ergonomic utilities for the terraform CLI.
 
+Usage
+-----
+
+::
+
+    alias tfplan="terraform plan -refresh=false -input=false -out=/tmp/plan && terraform show -json /tmp/plan"
+    alias tfapply="xargs -or0 terraform apply"
+    tfplan | tftool target --no-updates | tfapply
 
 .. toctree::
    :maxdepth: 2
