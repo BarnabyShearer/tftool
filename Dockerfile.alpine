@@ -1,0 +1,4 @@
+FROM alpine
+COPY tftool /usr/lib/python3.9/site-packages/tftool/
+USER nobody
+CMD ["python3", "-m", "tftool"]

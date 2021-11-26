@@ -1,0 +1,26 @@
+name: CI Docker
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: hadolint/hadolint-action@v1.6.0
+    - uses: hadolint/hadolint-action@v1.6.0
+      with:
+        dockerfile: Dockerfile.alpine
+    - uses: hadolint/hadolint-action@v1.6.0
+      with:
+        dockerfile: Dockerfile.debian
+    - uses: hadolint/hadolint-action@v1.6.0
+      with:
+        dockerfile: Dockerfile.python-alpine
+    - uses: hadolint/hadolint-action@v1.6.0
+      with:
+        dockerfile: Dockerfile.python-slim

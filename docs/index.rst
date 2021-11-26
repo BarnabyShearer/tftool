@@ -1,4 +1,4 @@
-tftk
+tftool
 ====
 
 Ergonomic utilities for the terraform CLI.
@@ -9,7 +9,7 @@ Ergonomic utilities for the terraform CLI.
    :caption: Contents:
 
    install
-   tftk
+   tftool
 
 Indices and tables
 ==================

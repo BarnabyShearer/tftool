@@ -1,0 +1,4 @@
+FROM debian:latest
+COPY tftool /usr/local/lib/python3.9/dist-packages/tftool/
+USER nobody
+CMD ["python3", "-m", "tftool"]

@@ -3,5 +3,5 @@ Installation
 
 ::
 
-    python3 -m pip install tftk
+    python3 -m pip install tftool
 
