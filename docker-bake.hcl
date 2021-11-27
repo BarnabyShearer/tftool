@@ -1,4 +1,4 @@
-arget "docker-metadata-action" {
+target "docker-metadata-action" {
   context = "./"
   platforms = [
     "linux/amd64",
