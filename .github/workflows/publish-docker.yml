@@ -38,7 +38,7 @@ jobs:
             ${{ github.repository }}
             ghcr.io/${{ github.repository }}
           flavor: |
-            latest=false
+            latest=${{ matrix.flavor == 'latest' }}
             suffix=-${{ matrix.flavor }}
           tags: |
             type=semver,pattern={{version}}
