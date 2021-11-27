@@ -4,7 +4,7 @@ format:
 
 test:
 	tox -e py39
+	docker run --rm --interactive --volume "${PWD}"/.hadolint.yaml:/.hadolint.yaml hadolint/hadolint <Dockerfile
 
 test_all:
 	tox
-	docker run --rm --interactive --volume "${PWD}"/.hadolint.yaml:/.hadolint.yaml hadolint/hadolint <Dockerfile
