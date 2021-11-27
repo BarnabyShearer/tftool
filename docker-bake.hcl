@@ -45,4 +45,3 @@ target "python-slim" {
   target = "python-slim"
 }
 
-"""
