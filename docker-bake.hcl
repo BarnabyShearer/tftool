@@ -7,30 +7,40 @@ target "docker-metadata-action" {
 }
 
 group "default" {
-  targets = ["python", "python-slim", "python-alpine", "alpine", "debian"]
+  targets = ["python", "latest", "python-slim", "python-alpine", "alpine", "debian", "dockerfromscratch"]
 }
 
 target "python" {
   inherits = ["docker-metadata-action"]
-  dockerfile = "Dockerfile"
+  target = "python"
+}
+
+target "latest" {
+  inherits = ["docker-metadata-action"]
+  target = "latest"
 }
 
 target "python-slim" {
   inherits = ["docker-metadata-action"]
-  dockerfile = "Dockerfile.python-slim"
+  target = "python-slim"
 }
 
 target "python-alpine" {
   inherits = ["docker-metadata-action"]
-  dockerfile = "Dockerfile.python-alpine"
+  target = "python-alpine"
 }
 
 target "alpine" {
   inherits = ["docker-metadata-action"]
-  dockerfile = "Dockerfile.alpine"
+  target = "alpine"
 }
 
 target "debian" {
   inherits = ["docker-metadata-action"]
-  dockerfile = "Dockerfile.debian"
+  target = "debian"
+}
+
+target "dockerfromscratch" {
+  inherits = ["docker-metadata-action"]
+  target = "dockerfromscratch"
 }

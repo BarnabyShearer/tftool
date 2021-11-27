@@ -1,4 +1,0 @@
-FROM barnabyshearer/dockerfromscratch:python
-COPY tftool /usr/lib/python3.8/site-packages/tftool
-USER nobody
-ENTRYPOINT ["python3", "-m", "tftool"]

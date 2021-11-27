@@ -1,9 +1,0 @@
-FROM debian:latest
-RUN apt-get -q -o=Dpkg::Use-Pty=0 update \
-    && DEBIAN_FRONTEND=noninteractive DEBCONF_NOWARNINGS=yes \
-       apt-get -q -o=Dpkg::Use-Pty=0 install --no-install-recommends --yes \
-        python3 \
-    && rm -rf /var/lib/apt/lists
-COPY tftool /usr/local/lib/python3.9/dist-packages/tftool/
-USER nobody
-ENTRYPOINT ["python3", "-m", "tftool"]
