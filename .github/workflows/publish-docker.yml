@@ -11,10 +11,12 @@ jobs:
       matrix:
         flavor:
         - python
-        - python-slim
-        - python-alpine
+        - latest
         - alpine
         - debian
+        - dockerfromscratch
+        - python-alpine
+        - python-slim
     permissions:
       packages: write
       contents: read
@@ -36,7 +38,7 @@ jobs:
             ${{ github.repository }}
             ghcr.io/${{ github.repository }}
           flavor: |
-            latest=${{ matrix.flavor == 'python' }}
+            latest=false
             suffix=-${{ matrix.flavor }}
           tags: |
             type=semver,pattern={{version}}
