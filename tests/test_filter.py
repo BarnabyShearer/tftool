@@ -15,6 +15,7 @@ def test_filter() -> None:
   "resource_changes": [
     {
       "address": "somthing.main",
+      "mode": "managed",
       "name": "main",
       "type": "somthing",
       "change": {
@@ -23,6 +24,7 @@ def test_filter() -> None:
     },
     {
       "address": "github_repository_file.main",
+      "mode": "managed",
       "name": "main",
       "type": "github_repository_file",
       "change": {
@@ -35,13 +37,23 @@ def test_filter() -> None:
     },
     {
       "address": "somthing.else",
+      "mode": "managed",
       "type": "somthing",
       "change": {
         "actions": ["create"]
       }
     },
     {
+      "address": "data.somthing.else",
+      "mode": "data",
+      "type": "somthing",
+      "change": {
+        "actions": ["read"]
+      }
+    },
+    {
       "address": "somthing.main2",
+      "mode": "managed",
       "type": "somthing",
       "change": {
         "actions": ["no-op"]

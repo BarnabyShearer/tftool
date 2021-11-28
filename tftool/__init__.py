@@ -117,10 +117,15 @@ def _filter(
                 "delete": destroys,
             }[resource["change"]["actions"][0]]:
                 if not regex or re.search(regex, resource["address"]):
-                    if resource["type"] in RESOURCE_ID:
-                        id = RESOURCE_ID[resource["type"]].format(
-                            **resource["change"]["after"]
-                        )
-                    else:
-                        id = resource.get("index", resource["name"])
+                    id = resource.get("index", resource["name"])
+                    try:
+                        if (
+                            resource["change"]["actions"][0] == "create"
+                            and resource["type"] in RESOURCE_ID
+                        ):
+                            id = RESOURCE_ID[resource["type"]].format(
+                                **resource["change"]["after"]
+                            )
+                    except Exception:  # pragma: no cover
+                        pass
                     yield (resource["address"], id)
