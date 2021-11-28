@@ -16,18 +16,33 @@ def test_filter() -> None:
     {
       "address": "somthing.main",
       "name": "main",
+      "type": "somthing",
       "change": {
         "actions": ["create"]
       }
     },
     {
+      "address": "github_repository_file.main",
+      "name": "main",
+      "type": "github_repository_file",
+      "change": {
+        "actions": ["create"],
+        "after": {
+          "repository": "repo",
+          "file": "main.py"
+        }
+      }
+    },
+    {
       "address": "somthing.else",
+      "type": "somthing",
       "change": {
         "actions": ["create"]
       }
     },
     {
       "address": "somthing.main2",
+      "type": "somthing",
       "change": {
         "actions": ["no-op"]
       }
@@ -42,5 +57,5 @@ def test_filter() -> None:
                 False,
             )
         )
-        == [("somthing.main", "main")]
+        == [("somthing.main", "main"), ("github_repository_file.main", "repo/main.py")]
     )

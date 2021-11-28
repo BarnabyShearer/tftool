@@ -97,6 +97,7 @@ def main() -> None:  # pragma: no cover
                     False,
                     False,
                 )
+                if target[1]
             ),
             end="",
         )
