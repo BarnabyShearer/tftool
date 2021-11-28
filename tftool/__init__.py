@@ -110,9 +110,12 @@ def _filter(
 ) -> Iterable[Tuple[str, str]]:
     for resource in json.load(plan)["resource_changes"]:
         if resource["mode"] == "managed":
-            if {"create": creates, "update": updates, "no-op": noops, "delete": destroys}[
-                resource["change"]["actions"][0]
-            ]:
+            if {
+                "create": creates,
+                "update": updates,
+                "no-op": noops,
+                "delete": destroys,
+            }[resource["change"]["actions"][0]]:
                 if not regex or re.search(regex, resource["address"]):
                     if resource["type"] in RESOURCE_ID:
                         id = RESOURCE_ID[resource["type"]].format(
