@@ -33,7 +33,7 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - uses: docker/metadata-action@v3.8.0
+      - uses: docker/metadata-action@v4.0.1
         id: meta
         with:
           images: |
